@@ -60,13 +60,13 @@ function toPayload(f) {
   return {
     id: f.id.trim().toLowerCase().replace(/\s+/g, "-"),
     category: f.category,
-    title: { fr: f.titleFr.trim(), en: f.titleEn.trim() },
-    location: { fr: f.locationFr.trim(), en: f.locationEn.trim() },
+    title: { fr: f.titleFr.trim(), en: f.titleEn.trim() || f.titleFr.trim() },
+    location: { fr: f.locationFr.trim(), en: f.locationEn.trim() || f.locationFr.trim() },
     year: f.year.trim(),
     area_m2: f.area.trim() ? Number(f.area) : null,
-    description: { fr: f.descFr.trim(), en: f.descEn.trim() },
-    program: { fr: lines(f.programFr), en: lines(f.programEn) },
-    tags: { fr: csv(f.tagsFr), en: csv(f.tagsEn) },
+    description: { fr: f.descFr.trim(), en: f.descEn.trim() || f.descFr.trim() },
+    program: { fr: lines(f.programFr), en: lines(f.programEn).length ? lines(f.programEn) : lines(f.programFr) },
+    tags: { fr: csv(f.tagsFr), en: csv(f.tagsEn).length ? csv(f.tagsEn) : csv(f.tagsFr) },
     imageUrl: f.imageUrl.trim(),
     gallery: lines(f.gallery),
   };
@@ -128,23 +128,17 @@ export default function ProjectEditor({ project, onSaved, onCancel }) {
         </Field>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Titre (FR)">
-          <input value={form.titleFr} onChange={set("titleFr")} required style={inputStyle} data-testid="editor-title-fr" />
-        </Field>
-        <Field label="Titre (EN)">
-          <input value={form.titleEn} onChange={set("titleEn")} required style={inputStyle} data-testid="editor-title-en" />
-        </Field>
-      </div>
+      <p style={{ fontSize: "0.75rem", color: "#5A5854" }} data-testid="editor-lang-note">
+        Saisie en français uniquement — la version anglaise du site reprend automatiquement ce contenu.
+      </p>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Localisation (FR)">
-          <input value={form.locationFr} onChange={set("locationFr")} style={inputStyle} data-testid="editor-location-fr" />
-        </Field>
-        <Field label="Localisation (EN)">
-          <input value={form.locationEn} onChange={set("locationEn")} style={inputStyle} data-testid="editor-location-en" />
-        </Field>
-      </div>
+      <Field label="Titre">
+        <input value={form.titleFr} onChange={set("titleFr")} required style={inputStyle} data-testid="editor-title-fr" />
+      </Field>
+
+      <Field label="Localisation">
+        <input value={form.locationFr} onChange={set("locationFr")} style={inputStyle} data-testid="editor-location-fr" />
+      </Field>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Année (optionnel)">
@@ -155,32 +149,17 @@ export default function ProjectEditor({ project, onSaved, onCancel }) {
         </Field>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Description (FR)">
-          <textarea value={form.descFr} onChange={set("descFr")} required rows={4} style={inputStyle} data-testid="editor-desc-fr" />
-        </Field>
-        <Field label="Description (EN)">
-          <textarea value={form.descEn} onChange={set("descEn")} required rows={4} style={inputStyle} data-testid="editor-desc-en" />
-        </Field>
-      </div>
+      <Field label="Description">
+        <textarea value={form.descFr} onChange={set("descFr")} required rows={4} style={inputStyle} data-testid="editor-desc-fr" />
+      </Field>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Programme (FR) — une ligne par élément">
-          <textarea value={form.programFr} onChange={set("programFr")} rows={4} style={inputStyle} data-testid="editor-program-fr" />
-        </Field>
-        <Field label="Programme (EN) — une ligne par élément">
-          <textarea value={form.programEn} onChange={set("programEn")} rows={4} style={inputStyle} data-testid="editor-program-en" />
-        </Field>
-      </div>
+      <Field label="Programme — une ligne par élément">
+        <textarea value={form.programFr} onChange={set("programFr")} rows={4} style={inputStyle} data-testid="editor-program-fr" />
+      </Field>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Tags (FR) — séparés par des virgules">
-          <input value={form.tagsFr} onChange={set("tagsFr")} placeholder="Résidentiel, Villa" style={inputStyle} data-testid="editor-tags-fr" />
-        </Field>
-        <Field label="Tags (EN) — séparés par des virgules">
-          <input value={form.tagsEn} onChange={set("tagsEn")} placeholder="Residential, Villa" style={inputStyle} data-testid="editor-tags-en" />
-        </Field>
-      </div>
+      <Field label="Tags — séparés par des virgules">
+        <input value={form.tagsFr} onChange={set("tagsFr")} placeholder="Résidentiel, Villa" style={inputStyle} data-testid="editor-tags-fr" />
+      </Field>
 
       <Field label="Image principale">
         <div className="flex flex-wrap items-center gap-3">
