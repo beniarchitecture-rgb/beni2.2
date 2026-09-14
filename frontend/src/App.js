@@ -36,6 +36,9 @@ import ProjectDetailPage from "@/pages/ProjectDetailPage";
 
 import { Toaster } from "@/components/ui/toaster";
 
+import AdminLogin from "@/pages/admin/AdminLogin";
+import AdminPanel from "@/pages/admin/AdminPanel";
+
 import { Facebook, Instagram, Mail, Menu, Phone, X } from "lucide-react";
 
 function classNames(...xs) {
@@ -336,6 +339,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminPanel />} />
         <Route element={<Layout lang={lang} setLang={setLang} />}>
           <Route index element={<HomeRoute lang={lang} />} />
 

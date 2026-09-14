@@ -17,15 +17,16 @@ Reproduire le site BENI Architecture existant à l'identique (repo : https://git
 - 14/09/2026 : Fix bloquant — `frontend/.env` du repo écrasait `REACT_APP_BACKEND_URL` avec l'ancienne URL (beni-deploy…) → CORS error sur le formulaire. .env restauré avec l'URL courante ; formulaire vérifié end-to-end (UI → POST /api/contact → MongoDB).
 - 14/09/2026 : SEO — domaine en dur (beni-preview…) remplacé par l'URL courante dans index.html (og:url, og:image, canonical, JSON-LD) + `public/llms.txt` créé.
 - 14/09/2026 : Vérifications — home, portfolio (15 projets, filtres), contact, mobile OK ; endpoints curl OK ; audit de déploiement PASS (prêt pour la production).
+- 14/09/2026 : Panneau admin projets — Auth JWT (cookies httpOnly, refresh, anti brute-force 5 échecs/15 min), admin seedé depuis env (admin@beniarchitecture.com). CRUD projets protégé : POST/PUT/DELETE /api/admin/projects + GET /api/projects public + GET /api/admin/messages. Seed des 15 projets en base au démarrage (backend/seed_projects.json généré depuis siteConfig.js). Frontend : /admin/login + /admin (onglets Projets/Messages, éditeur FR/EN complet), pages publiques (Portfolio, détail projet, home, PortfolioStrip) alimentées par l'API avec repli sur les données statiques.
 
 ## Backlog priorisé
-- P0 : Notifications sur le formulaire de contact (Resend/SendGrid ou WhatsApp via Twilio) — les messages arrivent en base mais personne n'est prévenu.
-- P1 : Admin/CMS pour gérer les projets sans toucher au code.
+- P0 : Notifications sur le formulaire de contact (Resend/SendGrid ou WhatsApp via Twilio) — les messages sont visibles dans l'admin mais personne n'est prévenu.
+- P1 : Upload d'images depuis l'admin (object storage) au lieu de coller des URLs.
 - P1 : Mesure des perfs mobile (three.js + GSAP + framer-motion) et SEO au déploiement.
-- P2 : Décider du sort des librairies d'auth inutilisées (code mort : bcrypt, passlib, pyjwt, python-jose).
-- P2 : Sécuriser/restreindre `GET /api/contact` (actuellement non protégé).
+- P2 : Sécuriser/retirer `GET /api/contact` public (remplacé par /api/admin/messages protégé).
+- P2 : Gestion des autres contenus (actualités, textes) dans l'admin.
 
 ## Prochaines tâches
 1. Brancher Resend pour notifier beniarchitecture@gmail.com à chaque message.
-2. Déployer en production (audit déjà PASS — bouton Deploy).
-3. Maquette d'admin CMS pour les projets.
+2. Déployer en production (les variables JWT_SECRET / ADMIN_* suivent le .env).
+3. Upload d'images de projets depuis l'admin.

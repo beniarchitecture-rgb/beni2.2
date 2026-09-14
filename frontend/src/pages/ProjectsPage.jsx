@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { siteConfig } from "@/data/siteConfig";
 import { t } from "@/lib/i18n";
+import useProjects from "@/hooks/useProjects";
 
 const FILTERS = [
   { key: "all", category: null },
@@ -14,12 +14,13 @@ const FILTERS = [
 
 export default function ProjectsPage({ lang }) {
   const [active, setActive] = useState("all");
+  const { projects: allProjects } = useProjects();
 
   const projects = useMemo(() => {
     const selected = FILTERS.find((f) => f.key === active);
-    if (!selected || !selected.category) return siteConfig.projects;
-    return siteConfig.projects.filter((p) => p.category === selected.category);
-  }, [active]);
+    if (!selected || !selected.category) return allProjects;
+    return allProjects.filter((p) => p.category === selected.category);
+  }, [active, allProjects]);
 
   return (
     <div data-testid="page-projects">
@@ -61,7 +62,7 @@ export default function ProjectsPage({ lang }) {
               style={{ borderColor: 'rgba(232, 96, 10, 0.5)', color: '#E8600A', fontSize: '0.7rem', letterSpacing: '0.2em' }}
               data-testid="projects-count"
             >
-              {projects.length} / {siteConfig.projects.length}
+              {projects.length} / {allProjects.length}
             </div>
           </div>
         </div>

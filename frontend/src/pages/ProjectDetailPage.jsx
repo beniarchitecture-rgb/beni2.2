@@ -1,28 +1,33 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { siteConfig } from "@/data/siteConfig";
 import { ProjectGallery } from "@/components/ProjectGallery";
+import useProjects from "@/hooks/useProjects";
 
 import { ArrowLeft, MapPin, Calendar, Maximize2 } from "lucide-react";
 
 export default function ProjectDetailPage({ lang }) {
   const params = useParams();
   const projectId = params.projectId;
+  const { projects, loading } = useProjects();
 
   const project = useMemo(() => {
-    return siteConfig.projects.find((p) => p.id === projectId);
-  }, [projectId]);
+    return projects.find((p) => p.id === projectId);
+  }, [projectId, projects]);
 
   // Get adjacent projects for navigation
   const adjacentProjects = useMemo(() => {
     if (!project) return { prev: null, next: null };
-    const idx = siteConfig.projects.findIndex((p) => p.id === projectId);
+    const idx = projects.findIndex((p) => p.id === projectId);
     return {
-      prev: idx > 0 ? siteConfig.projects[idx - 1] : null,
-      next: idx < siteConfig.projects.length - 1 ? siteConfig.projects[idx + 1] : null,
+      prev: idx > 0 ? projects[idx - 1] : null,
+      next: idx < projects.length - 1 ? projects[idx + 1] : null,
     };
-  }, [project, projectId]);
+  }, [project, projectId, projects]);
+
+  if (!project && loading) {
+    return <div data-testid="page-project-loading" style={{ minHeight: "60vh", background: "var(--dark2)" }} />;
+  }
 
   if (!project) {
     return (

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/siteConfig";
 import { t } from "@/lib/i18n";
 import { NavLink } from "react-router-dom";
+import useProjects from "@/hooks/useProjects";
 
 // Hook pour l'animation des compteurs
 function useCountUp(target, duration = 2000, startOnView = true) {
@@ -179,6 +180,7 @@ function MarqueeText({ text, speed = 30 }) {
 export default function HomePage({ lang, onNavigateProjects, onNavigateContact }) {
   const { offset, ref: parallaxRef } = useParallax(0.4);
   const [isVisible, setIsVisible] = useState(false);
+  const { projects } = useProjects();
 
   // Diaporama d'arrière-plan de la bannière (images de projets) + effet Ken Burns
   const heroSlides = [
@@ -410,7 +412,7 @@ export default function HomePage({ lang, onNavigateProjects, onNavigateContact }
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3" data-testid="featured-projects-grid">
             {["eglise-ambassade-miracles-daloa", "parc-attraction-abengourou", "temple-cathedrale-cocody"]
-              .map((id) => siteConfig.projects.find((p) => p.id === id))
+              .map((id) => projects.find((p) => p.id === id))
               .filter(Boolean)
               .map((p) => (
               <ProjectCard3D key={p.id} project={p} lang={lang} />

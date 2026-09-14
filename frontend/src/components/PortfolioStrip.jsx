@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
-import { siteConfig } from "@/data/siteConfig";
+import useProjects from "@/hooks/useProjects";
 
 export default function PortfolioStrip({ lang }) {
-  const featured = siteConfig.projects.slice(0, 3);
+  const { projects } = useProjects();
+  const featured = projects.slice(0, 3);
 
   return (
     <section className="border-t border-border/60 bg-muted/20" data-testid="vision-portfolio-strip">
