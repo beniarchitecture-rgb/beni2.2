@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+// L'ingress achemine /api vers le backend sur le même domaine : on privilégie
+// l'origine courante (insensible aux valeurs d'env périmées), REACT_APP_BACKEND_URL en repli.
+const ORIGIN = typeof window !== "undefined" ? window.location.origin : "";
+const BACKEND_URL = ORIGIN || (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
 const API_BASE = `${BACKEND_URL}/api`;
 
 export function formatApiError(e) {

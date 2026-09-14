@@ -1,18 +1,25 @@
+import asyncio
 from datetime import datetime, timezone, timedelta
+import ipaddress
 import json
 import logging
 import os
 from pathlib import Path
+import re
 from typing import List, Optional
 import uuid
 
 import bcrypt
+import httpx
 import jwt
 import requests
 from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, FastAPI, File, HTTPException, Request, Response, UploadFile
+from html import escape
+from html.parser import HTMLParser
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from urllib.parse import urlparse
 from starlette.middleware.cors import CORSMiddleware
 
 ROOT_DIR = Path(__file__).parent
@@ -105,6 +112,7 @@ async def create_contact_message(payload: ContactMessageCreate):
     doc["created_at"] = doc["created_at"].isoformat()
 
     _ = await db.contact_messages.insert_one(doc)
+    asyncio.create_task(notify_new_message(doc))
     return msg
 
 
@@ -515,6 +523,135 @@ async def startup_storage():
         logger.info("Object storage initialized")
     except Exception:
         logger.error("Object storage init failed")
+
+
+# -----------------------------
+# Notifications email (Resend géré par Emergent)
+# -----------------------------
+EMAIL_BASE_URL = "https://integrations.emergentagent.com"
+EMAIL_KEY = os.environ.get("EMERGENT_EMAIL_KEY", "")
+EMAIL_FROM_NAME = os.environ.get("EMAIL_FROM_NAME", "BENI Architecture")
+OWNER_EMAIL = os.environ.get("OWNER_EMAIL", "")
+
+_SHORTENERS = ("bit.ly", "tinyurl.com", "t.co", "is.gd", "cutt.ly", "goo.gl", "rebrand.ly")
+_CRED_ASK = ("reply with your password", "reply with the code", "send your password", "cvv",
+             "send us your password", "enter your password below", "confirm your card number",
+             "your full card number", "seed phrase", "recovery phrase", "verify your card",
+             "social security number", "confirm your bank details")
+_HOSTISH = re.compile(r"\b(?:https?://)?((?:[a-z0-9-]+\.)+[a-z]{2,})", re.I)
+
+
+def _host_ok(host: str) -> bool:
+    if not host or "xn--" in host:
+        return False
+    try:
+        ipaddress.ip_address(host)
+        return False
+    except ValueError:
+        pass
+    return not any(host == s or host.endswith("." + s) for s in _SHORTENERS)
+
+
+def _same_site(shown: str, real: str) -> bool:
+    return shown == real or real.endswith("." + shown) or shown.endswith("." + real)
+
+
+class _EmailScan(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.tags, self.urls, self.anchors = set(), [], []
+        self._href, self._text = None, []
+
+    def handle_starttag(self, tag, attrs):
+        self.tags.add(tag.lower())
+        self.urls += [v for k, v in attrs if k.lower() in ("href", "src") and v]
+        if tag.lower() == "a":
+            self._href = dict((k.lower(), v) for k, v in attrs).get("href")
+            self._text = []
+
+    def handle_data(self, data):
+        if self._href is not None:
+            self._text.append(data)
+
+    def handle_endtag(self, tag):
+        if tag.lower() == "a" and self._href is not None:
+            self.anchors.append((self._href, "".join(self._text)))
+            self._href, self._text = None, []
+
+
+def _assert_safe_email(subject: str, html: str) -> None:
+    scan = _EmailScan()
+    scan.feed(html)
+    if scan.tags & {"form", "input", "textarea", "select"}:
+        raise ValueError("No forms or input fields in email (G2)")
+    body = f"{subject}\n{html}".lower()
+    for p in _CRED_ASK:
+        if p in body:
+            raise ValueError(f"Email asks the recipient for credentials: {p!r} (G2)")
+    for url in scan.urls:
+        low = url.strip().lower()
+        if low.startswith(("mailto:", "tel:", "cid:", "#")):
+            continue
+        if not low.startswith("https://"):
+            raise ValueError(f"Email links/assets must be absolute https: {url!r} (G3)")
+        host = urlparse(low).hostname or ""
+        if not _host_ok(host) or urlparse(low).username is not None:
+            raise ValueError(f"Shortened, numeric-host or credential-bearing URL: {url!r} (G3)")
+    for href, text in scan.anchors:
+        real = urlparse(href.strip().lower()).hostname or ""
+        if not real:
+            continue
+        for m in _HOSTISH.finditer(text):
+            if not _same_site(m.group(1).lower(), real):
+                raise ValueError(f"Anchor text {m.group(1)!r} != real link host {real!r} (G3)")
+
+
+async def send_email(*, to: str, subject: str, html: str, reply_to: Optional[str] = None) -> Optional[str]:
+    _assert_safe_email(subject, html)
+    payload = {"to": [to], "subject": subject, "html": html, "from_name": EMAIL_FROM_NAME}
+    if reply_to:
+        payload["contact_email"] = reply_to
+    async with httpx.AsyncClient(timeout=30) as client:
+        resp = await client.post(
+            f"{EMAIL_BASE_URL}/api/v1/email/send",
+            headers={"X-Email-Key": EMAIL_KEY},
+            json=payload,
+        )
+    resp.raise_for_status()
+    return resp.json().get("id")
+
+
+async def notify_new_message(record: dict) -> None:
+    if not OWNER_EMAIL or not EMAIL_KEY:
+        return
+    try:
+        name = escape(record.get("name") or "Visiteur")
+        email = escape(record.get("email") or "")
+        msg_html = escape(record.get("message") or "").replace("\n", "<br>")
+        subj = escape(record.get("subject") or "")
+        date = escape(record.get("created_at") or "")
+        rows = (
+            f'<p style="margin:0 0 8px"><strong>Nom :</strong> {name}</p>'
+            f'<p style="margin:0 0 8px"><strong>Email :</strong> {email}</p>'
+            + (f'<p style="margin:0 0 8px"><strong>Sujet :</strong> {subj}</p>' if subj else "")
+            + f'<p style="margin:0 0 8px"><strong>Reçu le :</strong> {date}</p>'
+        )
+        subject = f"[BENI Architecture] Nouveau message de {record.get('name') or 'un visiteur'}"
+        html = (
+            '<table role="presentation" width="100%" cellpadding="0" cellspacing="0">'
+            '<tr><td style="padding:24px;font-family:Arial,sans-serif;color:#222222">'
+            '<h2 style="margin:0 0 16px;font-size:18px;color:#E8600A">Nouveau message depuis le site</h2>'
+            f"{rows}"
+            '<p style="margin:16px 0 4px"><strong>Message :</strong></p>'
+            f'<p style="margin:0;padding:12px;background:#f5f4f0;border-left:3px solid #E8600A">{msg_html}</p>'
+            f'<p style="margin-top:24px;font-size:12px;color:#888888">Envoyé par le site {escape(EMAIL_FROM_NAME)}. '
+            "Retrouvez tous les messages dans le panneau d'administration du site.</p>"
+            "</td></tr></table>"
+        )
+        await send_email(to=OWNER_EMAIL, subject=subject, html=html)
+        logger.info("Notification email envoyée pour le message %s", record.get("id"))
+    except Exception:
+        logger.exception("Échec de la notification email pour le message %s", record.get("id"))
 
 
 # Include the router in the main app
