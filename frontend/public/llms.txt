@@ -1,0 +1,10 @@
+# BENI Architecture
+
+Cabinet d'architecture contemporain premium basé à Abidjan, Côte d'Ivoire — architecture, design, développement immobilier et construction, avec une vision internationale.
+
+## Ce que propose le site
+- Portfolio de projets architecturaux avec pages détaillées par projet
+- Présentation du cabinet : vision, architecture, développement, construction
+- Actualités du cabinet
+- Formulaire de contact (FR/EN) enregistré côté serveur
+- Site bilingue français / anglais

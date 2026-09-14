@@ -1,0 +1,834 @@
+// Centralized content configuration (easy to edit)
+// Update projects + social links here.
+
+export const siteConfig = {
+  brand: {
+    name: "BENI Architecture",
+    yearFounded: 2022,
+    founder: "Dion Messan",
+    registration: "Cabinet inscrit à l’Ordre des Architectes (n° 2023/008/06)",
+    team: "+10 personnes (architectes, ingénieurs, techniciens supérieurs)",
+    region: "Côte d’Ivoire & sous-région",
+    paletteHint: {
+      primary: "#0B2A55", // bleu profond
+      accent: "#F59E0B", // jaune/orange architectural
+    },
+  },
+
+  i18n: {
+    defaultLanguage: "fr",
+    languages: [
+      { code: "fr", label: "FR" },
+      { code: "en", label: "EN" },
+    ],
+  },
+
+  navigation: [
+    // Inspired by reference UX (koffi-diabate.com) but original content
+    // Requested order: Portfolio just after Vision
+    { key: "vision", path: "/vision" },
+    { key: "projects", path: "/projets" },
+    { key: "architecture", path: "/architecture" },
+    { key: "development", path: "/developpement" },
+    { key: "construction", path: "/construction" },
+    { key: "news", path: "/actualites" },
+    { key: "contact", path: "/contact" },
+  ],
+
+  // Simple i18n dictionary (keep it short; we can expand anytime)
+  dictionary: {
+    fr: {
+      nav: {
+        vision: "Vision",
+        architecture: "Architecture",
+        development: "Développement",
+        construction: "Construction",
+        projects: "Portfolio",
+        news: "Actualités",
+        contact: "Contact",
+      },
+      hero: {
+        kicker: "Architecture & Urbanisme",
+        title: "Concevoir des espaces durables, modernes et identitaires",
+        subtitle:
+          "Cabinet d’architecture contemporain, haut de gamme, ancré dans son contexte local et ouvert sur l’international.",
+        ctaPrimary: "Découvrir nos projets",
+        ctaSecondary: "Nous contacter",
+      },
+      sections: {
+        visionTitle: "Vision",
+        visionText:
+          "BENI Architecture privilégie le partage, l’échange et la créativité, avec une approche moderne, qualitative et contextualisée. Nous concevons des édifices qui respectent le mode de vie, l’identité culturelle et l’intégration au territoire.",
+        expertiseTitle: "Domaines d’expertise",
+        featuredProjectsTitle: "Projets emblématiques",
+        projectsTitle: "Projets",
+        projectsSubtitle:
+          "Explorez une sélection de projets institutionnels, résidentiels et commerciaux.",
+        contactTitle: "Contact",
+        newsTitle: "Actualités",
+        comingSoon: "Bientôt",
+      },
+      contact: {
+        lead:
+          "Décrivez votre projet. Nous vous répondons rapidement pour cadrer les besoins, les délais et la mission.",
+        name: "Nom",
+        email: "Email",
+        phone: "Téléphone",
+        subject: "Objet",
+        message: "Message",
+        submit: "Envoyer",
+        sending: "Envoi...",
+        successTitle: "Message envoyé",
+        successDesc: "Merci. Nous revenons vers vous très vite.",
+        errorTitle: "Erreur",
+        errorDesc: "Impossible d’envoyer le message. Réessayez.",
+      },
+      filters: {
+        all: "Tous",
+        institutional: "Institutionnel",
+        residential: "Résidentiel",
+        commercial: "Commercial",
+        social: "Social",
+      },
+    },
+    en: {
+      nav: {
+        vision: "Vision",
+        architecture: "Architecture",
+        development: "Development",
+        construction: "Construction",
+        projects: "Portfolio",
+        news: "News",
+        contact: "Contact",
+      },
+      hero: {
+        kicker: "Architecture & Urbanism",
+        title: "Designing durable, modern, identity-driven spaces",
+        subtitle:
+          "A premium contemporary studio rooted in local African context with an international outlook.",
+        ctaPrimary: "Explore projects",
+        ctaSecondary: "Get in touch",
+      },
+      sections: {
+        visionTitle: "Vision",
+        visionText:
+          "BENI Architecture values collaboration, dialogue and creativity through a modern, rigorous and contextual approach. We design buildings aligned with lifestyle, cultural identity and territorial integration.",
+        expertiseTitle: "Expertise",
+        featuredProjectsTitle: "Selected projects",
+        projectsTitle: "Projects",
+        projectsSubtitle:
+          "A curated selection of institutional, residential and commercial work.",
+        contactTitle: "Contact",
+        newsTitle: "News",
+        comingSoon: "Coming soon",
+      },
+      contact: {
+        lead:
+          "Tell us about your project. We’ll reply quickly to align scope, timeline and mission.",
+        name: "Name",
+        email: "Email",
+        phone: "Phone",
+        subject: "Subject",
+        message: "Message",
+        submit: "Send",
+        sending: "Sending...",
+        successTitle: "Message sent",
+        successDesc: "Thank you. We’ll get back to you shortly.",
+        errorTitle: "Error",
+        errorDesc: "Could not send your message. Please try again.",
+      },
+      filters: {
+        all: "All",
+        institutional: "Institutional",
+        residential: "Residential",
+        commercial: "Commercial",
+        social: "Social",
+      },
+    },
+  },
+
+  expertise: [
+    {
+      key: "studies",
+      fr: "Études architecturales",
+      en: "Architectural studies",
+    },
+    {
+      key: "interior",
+      fr: "Design d’intérieur",
+      en: "Interior design",
+    },
+    {
+      key: "permits",
+      fr: "Permis de construire",
+      en: "Building permits",
+    },
+    {
+      key: "urban",
+      fr: "Aménagement urbain",
+      en: "Urban planning",
+    },
+    {
+      key: "realestate",
+      fr: "Expertise immobilière",
+      en: "Real-estate expertise",
+    },
+    {
+      key: "amo",
+      fr: "Assistance à la maîtrise d’ouvrage",
+      en: "Owner representation (AMO)",
+    },
+    {
+      key: "construction",
+      fr: "Construction et suivi des travaux",
+      en: "Construction & site supervision",
+    },
+  ],
+
+  // Projects (used for listing + detail pages)
+  // category: institutional|residential|commercial|social
+  projects: [
+    {
+      id: "temple-cathedrale-cocody",
+      category: "institutional",
+      title: {
+        fr: "Église Ambassade des Miracles – Temple Cathédrale",
+        en: "Embassy of Miracles Church – Cathedral Temple",
+      },
+      location: { fr: "Cocody, Abidjan", en: "Cocody, Abidjan" },
+      year: "",
+      area_m2: null,
+      description: {
+        fr: "Un projet monumental de temple cathédrale pouvant accueillir 8000 fidèles, avec des espaces dédiés à la jeunesse, l'administration et le stationnement souterrain.",
+        en: "A monumental cathedral temple project accommodating 8,000 worshippers, with dedicated spaces for youth, administration and underground parking.",
+      },
+      program: {
+        fr: [
+          "8000 places",
+          "Administration",
+          "Centre de prière et de délivrance",
+          "Salle de prière de la jeunesse (800 places)",
+          "ECODIM (800 places)",
+          "Parking sous-sol (60 véhicules)",
+          "Direction MTV+",
+          "Bloc toilettes",
+        ],
+        en: [
+          "8,000 seats",
+          "Administration",
+          "Prayer and deliverance center",
+          "Youth prayer hall (800 seats)",
+          "ECODIM (800 seats)",
+          "Underground parking (60 vehicles)",
+          "MTV+ Management",
+          "Restrooms block",
+        ],
+      },
+      tags: {
+        fr: ["Religieux", "8000 places", "Institutionnel"],
+        en: ["Religious", "8,000 seats", "Institutional"],
+      },
+      imageUrl: "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/ut3n7gui_ChatGPT%20Image%2011%20ao%C3%BBt%202026%2C%2014_32_20.png",
+      gallery: [
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/1mst6tau_ChatGPT%20Image%2012%20ao%C3%BBt%202026%2C%2014_29_37.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/heobd14i_ChatGPT%20Image%2012%20ao%C3%BBt%202026%2C%2013_46_54.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/ut3n7gui_ChatGPT%20Image%2011%20ao%C3%BBt%202026%2C%2014_32_20.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/0jzirgv4_ChatGPT%20Image%2014%20ao%C3%BBt%202026%2C%2009_40_18.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/y7spjxwx_ChatGPT%20Image%2014%20ao%C3%BBt%202026%2C%2009_37_19.png",
+      ],
+    },
+    {
+      id: "ecole-sci-mel-r3",
+      category: "institutional",
+      title: {
+        fr: "École SCI MEL (R+3)",
+        en: "SCI MEL School (G+3)",
+      },
+      location: { fr: "Djorobité 1, Abidjan", en: "Djorobité 1, Abidjan" },
+      year: "",
+      area_m2: 3000,
+      description: {
+        fr: "Groupe scolaire moderne bâti sur ≈ 3000 m², réparti en préscolaire, primaire et secondaire.",
+        en: "A modern school complex built on ~3,000 m², structured into pre-school, primary and secondary programs.",
+      },
+      program: {
+        fr: [
+          "35 salles de cours",
+          "4 laboratoires",
+          "Espaces de jeux",
+          "3 blocs d’administration",
+          "Bloc toilettes",
+        ],
+        en: [
+          "35 classrooms",
+          "4 laboratories",
+          "Play areas",
+          "3 administration blocks",
+          "Restrooms block",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/a5oeav62_ChatGPT%20Image%2018%20juin%202026%2C%2016_24_29.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y60i29e3_ChatGPT%20Image%2018%20juin%202026%2C%2016_14_22.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/a5oeav62_ChatGPT%20Image%2018%20juin%202026%2C%2016_24_29.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/x1h13q85_ChatGPT%20Image%2018%20juin%202026%2C%2017_18_48.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/gzl5n9v1_ChatGPT%20Image%2018%20juin%202026%2C%2017_29_59.png",
+      ],
+      tags: {
+        fr: ["Éducation", "R+3", "Institutionnel"],
+        en: ["Education", "G+3", "Institutional"],
+      },
+    },
+    {
+      id: "college-twins-boni-djorobite",
+      category: "institutional",
+      title: {
+        fr: "Collège Twins Boni",
+        en: "Twins Boni College",
+      },
+      location: { fr: "Djorobité, Abidjan", en: "Djorobité, Abidjan" },
+      year: "",
+      area_m2: 2400,
+      description: {
+        fr: "Collège moderne bâti sur ≈ 2 400 m² à Djorobité : 37 salles de classe, laboratoires et équipements pédagogiques complets derrière des façades colorées à claustras.",
+        en: "A modern college on ~2,400 m² in Djorobité: 37 classrooms, laboratories and complete educational facilities behind colorful screened façades.",
+      },
+      program: {
+        fr: [
+          "37 salles de classe",
+          "4 laboratoires",
+          "2 salles d'informatique",
+          "Bibliothèque",
+          "Salle d'archive",
+          "Salle des professeurs",
+          "Salle de réunion",
+          "9 bureaux",
+          "Administration",
+          "Cantine",
+          "Infirmerie",
+          "3 blocs de toilettes",
+          "Local technique",
+        ],
+        en: [
+          "37 classrooms",
+          "4 laboratories",
+          "2 computer rooms",
+          "Library",
+          "Archive room",
+          "Teachers' room",
+          "Meeting room",
+          "9 offices",
+          "Administration",
+          "Canteen",
+          "Infirmary",
+          "3 restroom blocks",
+          "Technical room",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/juz0uet8_F9067584-06A3-44C9-82AF-BCEB5A25A1C4%20%281%29.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/juz0uet8_F9067584-06A3-44C9-82AF-BCEB5A25A1C4%20%281%29.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/l1nmjrjq_IMAGE%2001.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zarxgsk1_IMAGE%2002.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/181sgfhp_IMAGE%2003.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/9su30oe8_IMAGE%2004.jpg",
+      ],
+      tags: {
+        fr: ["Éducation", "Institutionnel"],
+        en: ["Education", "Institutional"],
+      },
+    },
+    {
+      id: "eglise-ambassade-miracles-man",
+      category: "institutional",
+      title: {
+        fr: "Église Ambassade des Miracles – Temple de Man",
+        en: "Embassy of Miracles Church – Man Temple",
+      },
+      location: { fr: "Man", en: "Man" },
+      year: "",
+      area_m2: 2000,
+      description: {
+        fr: "Église moderne bâtie sur ≈ 2000 m² avec une salle de culte de 800 places.",
+        en: "A modern church built on ~2,000 m² featuring an 800-seat worship hall.",
+      },
+      program: {
+        fr: [
+          "Salle de culte (800 places)",
+          "Salle Écodime",
+          "3 bureaux",
+          "Salle de réunion",
+          "Bloc toilettes",
+        ],
+        en: [
+          "Worship hall (800 seats)",
+          "Ecodime hall",
+          "3 offices",
+          "Meeting room",
+          "Restrooms block",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y4tivtx1_ChatGPT%20Image%203%20ao%C3%BBt%202026%2C%2013_58_36.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y4tivtx1_ChatGPT%20Image%203%20ao%C3%BBt%202026%2C%2013_58_36.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ssrx8yr8_ChatGPT%20Image%2024%20juil.%202026%2C%2010_47_00.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zaues402_ChatGPT%20Image%2024%20juil.%202026%2C%2010_51_42.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/kh6tggkj_ChatGPT%20Image%2024%20juil.%202026%2C%2011_04_25.png",
+      ],
+      tags: {
+        fr: ["Culte", "Institutionnel"],
+        en: ["Worship", "Institutional"],
+      },
+    },
+    {
+      id: "eglise-ambassade-miracles-daloa",
+      category: "institutional",
+      title: {
+        fr: "Église Ambassade des Miracles – Daloa",
+        en: "Embassy of Miracles Church – Daloa",
+      },
+      location: { fr: "Daloa", en: "Daloa" },
+      year: "",
+      area_m2: 750,
+      description: {
+        fr: "Église moderne bâtie sur ≈ 750 m² à Daloa, avec salle de culte, espaces administratifs et parking.",
+        en: "A modern church built on ~750 m² in Daloa, featuring a worship hall, administrative spaces and parking.",
+      },
+      program: {
+        fr: [
+          "Salle de culte",
+          "ECODIM",
+          "5 bureaux",
+          "Blocs toilettes",
+          "Salle d'attente",
+          "Parking",
+        ],
+        en: [
+          "Worship hall",
+          "ECODIM",
+          "5 offices",
+          "Restroom blocks",
+          "Waiting room",
+          "Parking",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y04fy7jy_IMAGE%2003.jpg",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/hmgsgbm7_IMAGE%2001.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ni91dc7i_IMAGE%2002.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y04fy7jy_IMAGE%2003.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/k9henzka_IMAGE%2004.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/39heh9g5_IMAGE%2005.jpg",
+      ],
+      tags: {
+        fr: ["Culte", "Institutionnel"],
+        en: ["Worship", "Institutional"],
+      },
+    },
+    {
+      id: "parc-attraction-abengourou",
+      category: "commercial",
+      title: {
+        fr: "Parc d'Attraction",
+        en: "Amusement Park",
+      },
+      location: { fr: "Abengourou, Comoé", en: "Abengourou, Comoé" },
+      year: "",
+      area_m2: 4000,
+      description: {
+        fr: "Parc d'attraction familial de ≈ 4 000 m² à Abengourou : manèges, aires de jeux, piscines et espaces de détente au cœur d'un cadre paysager.",
+        en: "A family amusement park of ~4,000 m² in Abengourou: rides, playgrounds, swimming pools and relaxation areas within a landscaped setting.",
+      },
+      program: {
+        fr: [
+          "Terrain de foot",
+          "Grande piscine",
+          "Petite piscine",
+          "Espace de jeux",
+          "Espace vert",
+          "Cuisine",
+          "Bungalow",
+          "Préau",
+          "Parking",
+        ],
+        en: [
+          "Football pitch",
+          "Large swimming pool",
+          "Small swimming pool",
+          "Play area",
+          "Green space",
+          "Kitchen",
+          "Bungalow",
+          "Covered patio",
+          "Parking",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/cas0yezo_ChatGPT%20Image%2027%20juil.%202026%2C%2008_42_58.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/cas0yezo_ChatGPT%20Image%2027%20juil.%202026%2C%2008_42_58.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/vol79yj7_ChatGPT%20Image%2027%20juil.%202026%2C%2011_26_06.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/58uc83xi_ChatGPT%20Image%2027%20juil.%202026%2C%2011_37_56.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qp0d0zk5_ChatGPT%20Image%2027%20juil.%202026%2C%2011_49_34.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ohbk5k2k_ChatGPT%20Image%2027%20juil.%202026%2C%2011_57_18.png",
+      ],
+      tags: {
+        fr: ["Loisirs", "Équipement public", "Commercial"],
+        en: ["Leisure", "Public facility", "Commercial"],
+      },
+    },
+    {
+      id: "hotel-sci-sad-r3-gagnoa",
+      category: "commercial",
+      title: {
+        fr: "Hôtel SCI SAD (R+3)",
+        en: "SCI SAD Hotel (G+3)",
+      },
+      location: { fr: "Gagnoa", en: "Gagnoa" },
+      year: "",
+      area_m2: 1200,
+      description: {
+        fr: "Hôtel moderne bâti sur ≈ 1200 m² : accueil, piscine, salle polyvalente et hébergement.",
+        en: "A modern hotel on ~1,200 m² with reception, pool, multi-purpose hall and guest rooms.",
+      },
+      program: {
+        fr: [
+          "Guérite",
+          "Accueil",
+          "Piscine (60 m²)",
+          "Salle polyvalente (180 places)",
+          "28 chambres simples",
+          "8 suites",
+          "Bureau + bloc toilettes",
+        ],
+        en: [
+          "Gatehouse",
+          "Reception",
+          "Pool (60 m²)",
+          "Multi-purpose hall (180 seats)",
+          "28 standard rooms",
+          "8 suites",
+          "Office + restrooms",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ja32ews6_ChatGPT%20Image%208%20juil.%202026%2C%2010_39_27.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ja32ews6_ChatGPT%20Image%208%20juil.%202026%2C%2010_39_27.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/i3i30ef7_ChatGPT%20Image%2010%20juin%202026%2C%2017_31_46.png",
+      ],
+      tags: {
+        fr: ["Hôtellerie", "Commercial"],
+        en: ["Hospitality", "Commercial"],
+      },
+    },
+    {
+      id: "orphelinat-sinai-ndouci",
+      category: "social",
+      title: { fr: "Orphelinat Sinai", en: "Sinai Orphanage" },
+      location: { fr: "N’Douci", en: "N’Douci" },
+      year: "",
+      area_m2: 1000,
+      description: {
+        fr: "Projet social moderne bâti sur ≈ 1000 m², combinant hébergement, restauration et formation.",
+        en: "A modern social project built on ~1,000 m² combining housing, dining and training spaces.",
+      },
+      program: {
+        fr: [
+          "Accueil",
+          "Aire de jeux",
+          "Cantine",
+          "4 salles de formation",
+          "18 chambres de dortoirs",
+          "Bloc toilettes",
+        ],
+        en: [
+          "Reception",
+          "Playground",
+          "Cafeteria",
+          "4 training rooms",
+          "18 dorm rooms",
+          "Restrooms block",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/m6epvw2m_ChatGPT%20Image%2022%20juin%202026%2C%2010_53_24.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/m6epvw2m_ChatGPT%20Image%2022%20juin%202026%2C%2010_53_24.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/bbqbkbum_ChatGPT%20Image%2022%20juin%202026%2C%2011_01_33.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/l0y546x0_ChatGPT%20Image%2022%20juin%202026%2C%2013_09_20.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/8x284k97_ChatGPT%20Image%2022%20juin%202026%2C%2013_14_35.png",
+      ],
+      tags: {
+        fr: ["Social", "Institutionnel", "Hébergement"],
+        en: ["Social", "Institutional", "Housing"],
+      },
+    },
+    {
+      id: "immeuble-sci-ys-r3-penthouse",
+      category: "residential",
+      title: {
+        fr: "Immeuble SCI YS (R+3 + Penthouse)",
+        en: "SCI YS Building (G+3 + Penthouse)",
+      },
+      location: { fr: "Cocody Deux-Plateaux", en: "Cocody Deux-Plateaux" },
+      year: "",
+      area_m2: null,
+      description: {
+        fr: "Immeuble résidentiel R+3 avec penthouse, façades contemporaines et circulations optimisées.",
+        en: "A G+3 residential building with penthouse, contemporary façades and optimized circulation.",
+      },
+      program: {
+        fr: [
+          "Volumes contemporains",
+          "Façades premium",
+          "Optimisation des circulations",
+        ],
+        en: [
+          "Contemporary massing",
+          "Premium façades",
+          "Optimized circulation",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ykqh7rse_beni%20architecture.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ykqh7rse_beni%20architecture.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/bujsr8n5_beni%20architecture1.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/tckg2gvk_beni%20architecture3.png",
+      ],
+      tags: {
+        fr: ["Résidentiel", "Immeuble"],
+        en: ["Residential", "Building"],
+      },
+    },
+    {
+      id: "deux-immeubles-r2-bassam",
+      category: "residential",
+      title: {
+        fr: "2 Immeubles R+2",
+        en: "Two Residential Buildings (G+2)",
+      },
+      location: { fr: "Bassam, Abidjan", en: "Bassam, Abidjan" },
+      year: "",
+      area_m2: 400,
+      description: {
+        fr: "Deux immeubles R+2 bâtis sur ≈ 400 m² à Bassam, composés de 16 studios aux façades contemporaines.",
+        en: "Two G+2 buildings on ~400 m² in Bassam, comprising 16 studios with contemporary façades.",
+      },
+      program: {
+        fr: ["16 studios", "2 immeubles R+2", "Façades contemporaines"],
+        en: ["16 studios", "2 G+2 buildings", "Contemporary façades"],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ky4m1zv3_beni%20architecture_22.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ky4m1zv3_beni%20architecture_22.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/mdxj2tnj_beni%20architecture55.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/1w528nqr_beni%20architecture77.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/852j6jbm_beni%20architecture78.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/fi60egsw_beni%20architecture88.png",
+      ],
+      tags: {
+        fr: ["Résidentiel", "Studios", "R+2"],
+        en: ["Residential", "Studios", "G+2"],
+      },
+    },
+    {
+      id: "immeuble-r6-riviera-mbadon",
+      category: "residential",
+      title: {
+        fr: "Immeuble R+6",
+        en: "Residential Building (G+6)",
+      },
+      location: { fr: "Cocody, Riviera M'Badon, Abidjan", en: "Cocody, Riviera M'Badon, Abidjan" },
+      year: "",
+      area_m2: 1251,
+      description: {
+        fr: "Immeuble R+6 bâti sur ≈ 1 251 m² à Cocody Riviera M'Badon : 36 appartements F3, commerces en rez-de-chaussée et façades contemporaines noir et blanc.",
+        en: "A G+6 building on ~1,251 m² in Cocody Riviera M'Badon: 36 three-room apartments, ground-floor shops and contemporary black-and-white façades.",
+      },
+      program: {
+        fr: [
+          "36 appartements F3",
+          "2 magasins",
+          "2 guérites",
+          "Parkings",
+        ],
+        en: [
+          "36 three-room apartments (F3)",
+          "2 shops",
+          "2 guard posts",
+          "Parking",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/q13xmymx_ChatGPT%20Image%2028%20juil.%202026%2C%2015_51_31.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/3r1fctci_ChatGPT%20Image%2024%20juil.%202026%2C%2009_29_57.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zt5s8zgi_ChatGPT%20Image%2028%20juil.%202026%2C%2015_03_20.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qhmiboof_ChatGPT%20Image%2028%20juil.%202026%2C%2015_49_52.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/q13xmymx_ChatGPT%20Image%2028%20juil.%202026%2C%2015_51_31.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/wkg85tnb_ChatGPT%20Image%2028%20juil.%202026%2C%2016_09_39.png",
+      ],
+      tags: {
+        fr: ["Résidentiel", "Immeuble", "R+6"],
+        en: ["Residential", "Building", "G+6"],
+      },
+    },
+    {
+      id: "villa-triplex-sci-ministre-dabou",
+      category: "residential",
+      title: {
+        fr: "Villa Triplex SCI Ministre",
+        en: "SCI Ministre Triplex Villa",
+      },
+      location: { fr: "Dabou Akradjo", en: "Dabou Akradjo" },
+      year: "",
+      area_m2: 1500,
+      description: {
+        fr: "Villa triplex moderne bâtie sur ≈ 1 500 m² à Dabou Akradjo : volumes épurés, terrasses végétalisées et vastes espaces de vie ouverts sur un jardin paysager.",
+        en: "A modern triplex villa on ~1,500 m² in Dabou Akradjo: clean volumes, planted terraces and generous living spaces opening onto a landscaped garden.",
+      },
+      program: {
+        fr: [
+          "Parking 5 véhicules",
+          "2 séjours familiaux",
+          "1 séjour privé",
+          "Salle à manger",
+          "Cuisine",
+          "Espace vert",
+          "Préau",
+        ],
+        en: [
+          "5-car parking",
+          "2 family living rooms",
+          "1 private living room",
+          "Dining room",
+          "Kitchen",
+          "Green space",
+          "Covered patio",
+        ],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qlwcxpd9_beniarchi.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qlwcxpd9_beniarchi.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/8pquqeql_beniarchi00.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/cezy4d47_beniarchi22.png",
+      ],
+      tags: {
+        fr: ["Résidentiel", "Villa", "Triplex"],
+        en: ["Residential", "Villa", "Triplex"],
+      },
+    },
+    {
+      id: "villa-triplex-songon-agban",
+      category: "residential",
+      title: {
+        fr: "Villa Triplex Songon Agban",
+        en: "Songon Agban Triplex Villa",
+      },
+      location: { fr: "Songon Agban, Abidjan", en: "Songon Agban, Abidjan" },
+      year: "",
+      area_m2: 500,
+      description: {
+        fr: "Villa triplex moderne bâtie sur ≈ 500 m² à Songon Agban : 8 pièces, piscine et jardin paysager, jeu de volumes contrastés noir et blanc.",
+        en: "A modern triplex villa on ~500 m² in Songon Agban: 8 rooms, a swimming pool and landscaped garden, with contrasting black-and-white volumes.",
+      },
+      program: {
+        fr: ["Villa de 8 pièces", "1 piscine", "Jardin paysager"],
+        en: ["8-room villa", "1 swimming pool", "Landscaped garden"],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qbrt1956_ChatGPT%20Image%204%20ao%C3%BBt%202026%2C%2009_14_16.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qbrt1956_ChatGPT%20Image%204%20ao%C3%BBt%202026%2C%2009_14_16.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zg6tsa54_ChatGPT%20Image%202%20juil.%202026%2C%2011_44_01.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/oywzy5g0_ChatGPT%20Image%202%20juil.%202026%2C%2013_56_06.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/rq2rxa0j_ChatGPT%20Image%202%20juil.%202026%2C%2014_46_31.png",
+      ],
+      tags: {
+        fr: ["Résidentiel", "Villa", "Triplex"],
+        en: ["Residential", "Villa", "Triplex"],
+      },
+    },
+    {
+      id: "villa-triplex-bioclimatique-mbadon",
+      category: "residential",
+      title: {
+        fr: "Villa Triplex Bioclimatique",
+        en: "Bioclimatic Triplex Villa",
+      },
+      location: { fr: "Cocody M'Badon, Abidjan", en: "Cocody M'Badon, Abidjan" },
+      year: "",
+      area_m2: 600,
+      description: {
+        fr: "Villa triplex bioclimatique bâtie sur ≈ 600 m² à Cocody M'Badon : conception passive, colonnades sculpturales, piscine et espaces de vie généreux.",
+        en: "A bioclimatic triplex villa on ~600 m² in Cocody M'Badon: passive design, sculptural colonnades, a swimming pool and generous living spaces.",
+      },
+      program: {
+        fr: ["1 piscine", "5 chambres", "2 salons familiaux", "1 salon privé"],
+        en: ["1 swimming pool", "5 bedrooms", "2 family living rooms", "1 private living room"],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/f6k0sq8a_ChatGPT%20Image%209%20juin%202026%2C%2010_07_21.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ijy092em_ChatGPT%20Image%209%20juin%202026%2C%2010_10_41.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/l6j1ict6_ChatGPT%20Image%209%20juin%202026%2C%2010_33_13.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/x7c95u31_ChatGPT%20Image%2010%20juin%202026%2C%2017_02_37.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/f6k0sq8a_ChatGPT%20Image%209%20juin%202026%2C%2010_07_21.png",
+      ],
+      tags: {
+        fr: ["Résidentiel", "Villa", "Bioclimatique"],
+        en: ["Residential", "Villa", "Bioclimatic"],
+      },
+    },
+    {
+      id: "villa-triplex-cocody-deux-plateaux",
+      category: "residential",
+      title: {
+        fr: "Villa Triplex",
+        en: "Triplex Villa",
+      },
+      location: { fr: "Cocody Deux-Plateaux", en: "Cocody Deux-Plateaux" },
+      year: "",
+      area_m2: 400,
+      description: {
+        fr: "Villa triplex bâtie sur ≈ 400 m² : un appartement de type F8.",
+        en: "A triplex villa built on ~400 m²: one F8 apartment.",
+      },
+      program: {
+        fr: ["Appartement F8", "Triplex", "Résidentiel premium"],
+        en: ["F8 apartment", "Triplex", "Premium residential"],
+      },
+      imageUrl:
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/9c2800dz_beni%20architecture_2.png",
+      gallery: [
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/9c2800dz_beni%20architecture_2.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ya8tdkmn_beni%20architecture_11%20-%20Copie.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/77ssxjq2_ChatGPT%20Image%202%20juil.%202026%2C%2009_54_34.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/6oi18i9z_ChatGPT%20Image%2010%20juin%202026%2C%2009_01_58%20-%20Copie.png",
+      ],
+      tags: {
+        fr: ["Résidentiel", "Villa", "Triplex"],
+        en: ["Residential", "Villa", "Triplex"],
+      },
+    },
+  ],
+
+  social: {
+    // Put your full URLs. Leave empty to hide the icon.
+    facebook: "https://www.facebook.com/share/19HYwRCMMi/",
+    instagram: "https://www.instagram.com/beni.architecture?igsh=MXR3Z2VzbGdscnlpaQ==",
+    tiktok: "https://www.tiktok.com/@beniarchitectureci?is_from_webapp=1&sender_device=pc",
+    x: "https://x.com/beniarchit2442",
+    whatsapp: "https://wa.me/2250546052442",
+    gmail: "beniarchitecture@gmail.com",
+    phones: ["+225 05 46 05 24 42", "+225 27 35 97 30 78"],
+  },
+};

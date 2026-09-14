@@ -1,0 +1,131 @@
+/* Intentionally minimal — the UI is built with Tailwind + shadcn/ui components. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --beni-primary: #0E2A47;
+  --beni-accent: #F4B41A;
+}
+
+/* Slightly premium text rendering */
+body {
+  text-rendering: geometricPrecision;
+}
+
+/* Make focus visible */
+:focus-visible {
+  outline: 2px solid var(--beni-accent);
+  outline-offset: 2px;
+}
+
+/* ===========================================
+   Hero background slideshow (Ken Burns + fade)
+   =========================================== */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1.6s ease-in-out;
+  will-change: opacity, transform;
+  z-index: 0;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Four alternating Ken Burns motions for variety */
+.hero-slide.is-active.dir-0 {
+  animation: kbZoomIn 9s ease-out forwards;
+}
+.hero-slide.is-active.dir-1 {
+  animation: kbPanLeft 9s ease-out forwards;
+}
+.hero-slide.is-active.dir-2 {
+  animation: kbZoomOut 9s ease-out forwards;
+}
+.hero-slide.is-active.dir-3 {
+  animation: kbPanRight 9s ease-out forwards;
+}
+
+@keyframes kbZoomIn {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.26); }
+}
+@keyframes kbZoomOut {
+  from { transform: scale(1.26); }
+  to   { transform: scale(1.08); }
+}
+@keyframes kbPanLeft {
+  from { transform: scale(1.18) translate3d(2.5%, 1%, 0); }
+  to   { transform: scale(1.2)  translate3d(-2.5%, -2%, 0); }
+}
+@keyframes kbPanRight {
+  from { transform: scale(1.18) translate3d(-2.5%, 1%, 0); }
+  to   { transform: scale(1.2)  translate3d(2.5%, -2%, 0); }
+}
+
+/* Dark gradient overlay to keep text legible */
+.hero-slide-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 16, 23, 0.93) 0%,
+    rgba(14, 16, 23, 0.62) 50%,
+    rgba(14, 16, 23, 0.9) 100%
+  );
+}
+
+/* Slide indicator dots */
+.hero-dots {
+  position: absolute;
+  left: 1rem;
+  bottom: 5.5rem;
+  z-index: 10;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .hero-dots {
+    left: 4rem;
+    bottom: 4.5rem;
+  }
+}
+.hero-dot {
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.28);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.4s ease, width 0.4s ease;
+}
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+.hero-dot.active {
+  width: 42px;
+  background: #ff8533;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.is-active.dir-0,
+  .hero-slide.is-active.dir-1,
+  .hero-slide.is-active.dir-2,
+  .hero-slide.is-active.dir-3 {
+    animation: none;
+    transform: scale(1.05);
+  }
+}
