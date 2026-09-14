@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { createProject, formatApiError, updateProject } from "@/lib/api";
+import UploadButton from "@/components/admin/UploadButton";
 
 const CATEGORIES = [
   { value: "institutional", label: "Institutionnel" },
@@ -181,8 +182,11 @@ export default function ProjectEditor({ project, onSaved, onCancel }) {
         </Field>
       </div>
 
-      <Field label="Image principale (URL)">
-        <input value={form.imageUrl} onChange={set("imageUrl")} required placeholder="https://..." style={inputStyle} data-testid="editor-image-url" />
+      <Field label="Image principale">
+        <div className="flex flex-wrap items-center gap-3">
+          <input value={form.imageUrl} onChange={set("imageUrl")} required placeholder="https://... ou envoyez un fichier" style={{ ...inputStyle, flex: "1 1 280px" }} data-testid="editor-image-url" />
+          <UploadButton label="Envoyer une image" testId="editor-upload-main" onUploaded={(url) => setForm((f) => ({ ...f, imageUrl: url }))} />
+        </div>
       </Field>
       {form.imageUrl.trim() && (
         <div
@@ -192,9 +196,27 @@ export default function ProjectEditor({ project, onSaved, onCancel }) {
         />
       )}
 
-      <Field label="Galerie (URLs — une ligne par image)">
-        <textarea value={form.gallery} onChange={set("gallery")} rows={4} placeholder={"https://...\nhttps://..."} style={inputStyle} data-testid="editor-gallery" />
+      <Field label="Galerie">
+        <UploadButton multiple label="Ajouter des images" testId="editor-upload-gallery" onUploaded={(url) => setForm((f) => ({ ...f, gallery: f.gallery ? `${f.gallery}\n${url}` : url }))} />
+        <textarea className="mt-3" value={form.gallery} onChange={set("gallery")} rows={4} placeholder={"URLs — une ligne par image"} style={inputStyle} data-testid="editor-gallery" />
       </Field>
+      {lines(form.gallery).length > 0 && (
+        <div className="flex flex-wrap gap-3" data-testid="editor-gallery-thumbs">
+          {lines(form.gallery).map((u, i) => (
+            <div key={`${i}-${u}`} className="relative h-16 w-24" style={{ backgroundImage: `url(${u})`, backgroundSize: "cover", backgroundPosition: "center", border: "1px solid rgba(232,96,10,0.22)" }}>
+              <button
+                type="button"
+                onClick={() => setForm((f) => { const arr = lines(f.gallery); arr.splice(i, 1); return { ...f, gallery: arr.join("\n") }; })}
+                className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center"
+                style={{ background: "#E8600A", color: "#fff", fontSize: "0.7rem", cursor: "pointer", border: "none", lineHeight: 1 }}
+                data-testid={`editor-gallery-remove-${i}`}
+              >
+                ×
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
 
       {error && (
         <p style={{ color: "#f87171", fontSize: "0.8rem" }} data-testid="editor-error">

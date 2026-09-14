@@ -99,3 +99,15 @@ export async function updateProject(id, payload) {
 export async function deleteProject(id) {
   return withRefreshRetry(async () => (await axios.delete(`${API_BASE}/admin/projects/${id}`, authed())).data);
 }
+
+export async function uploadImage(file) {
+  const form = new FormData();
+  form.append("file", file);
+  return withRefreshRetry(async () => {
+    const res = await axios.post(`${API_BASE}/admin/upload`, form, {
+      withCredentials: true,
+      headers: getAccessToken() ? { Authorization: `Bearer ${getAccessToken()}` } : {},
+    });
+    return res.data; // { url, path, size }
+  });
+}

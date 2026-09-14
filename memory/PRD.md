@@ -19,15 +19,15 @@ Reproduire le site BENI Architecture existant à l'identique (repo : https://git
 - 14/09/2026 : Vérifications — home, portfolio (15 projets, filtres), contact, mobile OK ; endpoints curl OK ; audit de déploiement PASS (prêt pour la production).
 - 14/09/2026 : Panneau admin projets — Auth JWT (cookies httpOnly, refresh, anti brute-force 5 échecs/15 min), admin seedé depuis env (admin@beniarchitecture.com). CRUD projets protégé : POST/PUT/DELETE /api/admin/projects + GET /api/projects public + GET /api/admin/messages. Seed des 15 projets en base au démarrage (backend/seed_projects.json généré depuis siteConfig.js). Frontend : /admin/login + /admin (onglets Projets/Messages, éditeur FR/EN complet), pages publiques (Portfolio, détail projet, home, PortfolioStrip) alimentées par l'API avec repli sur les données statiques.
 - 14/09/2026 : Fix accès admin — les cookies httpOnly étaient bloqués dans certains contextes navigateur (iframe de preview, blocage cookies tiers), empêchant la connexion. L'auth utilise désormais un token Bearer stocké en localStorage en plus des cookies (login renvoie access_token/refresh_token dans le corps, /auth/refresh accepte le Bearer, get_current_user accepte les deux). Vérifié : panneau accessible même avec tous les cookies supprimés.
+- 14/09/2026 : Upload d'images depuis l'admin — object storage Emergent (EMERGENT_LLM_KEY, préfixe beni-architecture/). POST /api/admin/upload protégé (JPG/PNG/WebP/GIF, 10 Mo max) + GET /api/files/{path} public avec cache long. Références fichiers en base (collection files, soft-delete). Éditeur de projet : bouton « Envoyer une image » (image principale) et « Ajouter des images » (galerie multiple) avec miniatures et suppression ; les URLs /api/files/... se remplissent automatiquement et s'affichent sur le site public.
 
 ## Backlog priorisé
 - P0 : Notifications sur le formulaire de contact (Resend/SendGrid ou WhatsApp via Twilio) — les messages sont visibles dans l'admin mais personne n'est prévenu.
-- P1 : Upload d'images depuis l'admin (object storage) au lieu de coller des URLs.
 - P1 : Mesure des perfs mobile (three.js + GSAP + framer-motion) et SEO au déploiement.
 - P2 : Sécuriser/retirer `GET /api/contact` public (remplacé par /api/admin/messages protégé).
 - P2 : Gestion des autres contenus (actualités, textes) dans l'admin.
 
 ## Prochaines tâches
 1. Brancher Resend pour notifier beniarchitecture@gmail.com à chaque message.
-2. Déployer en production (les variables JWT_SECRET / ADMIN_* suivent le .env).
-3. Upload d'images de projets depuis l'admin.
+2. Déployer en production (les variables JWT_SECRET / ADMIN_* / EMERGENT_LLM_KEY suivent le .env).
+3. Gestion des actualités dans l'admin.
