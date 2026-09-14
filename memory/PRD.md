@@ -34,3 +34,6 @@ Reproduire le site BENI Architecture existant à l'identique (repo : https://git
 ## Prochaines tâches
 1. Déployer en production (les variables JWT_SECRET / ADMIN_* / EMERGENT_* suivent le .env).
 2. Gestion des actualités dans l'admin.
+
+## Direction artistique (14/09/2026)
+- Typographie refaite à la demande de l'utilisateur : titres en **Anton** (grotesque massive, majuscules, style brutaliste/grands cabinets internationaux) + accents en **Cormorant Garamond italique orange** (signature conservée). Corps en Outfit. Chiffres des stats en Anton. Modifs centralisées : index.html (Google Fonts), index.css (règles h1-h5, .section-header h2, .stat-num). Admin conservé en Cormorant (outil interne).
