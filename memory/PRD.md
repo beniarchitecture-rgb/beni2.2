@@ -24,14 +24,12 @@ Reproduire le site BENI Architecture existant à l'identique (repo : https://git
 - 14/09/2026 : Notifications email — chaque message du formulaire contact déclenche un email vers beniarchitecture@gmail.com (Resend géré par Emergent, EMERGENT_EMAIL_KEY, from_name « BENI Architecture », template serveur fixe avec échappement HTML, fire-and-forget non bloquant via asyncio.create_task). Vérifié : clé valide (202), email envoyé à chaque soumission test.
 - 14/09/2026 : Mot de passe admin changé → « Beni-Archi-2026-Villa! » (ancien désactivé, vérifié 401).
 - 14/09/2026 : Fix critique récurrent — la plateforme réécrase périodiquement frontend/.env avec l'ancienne URL du fork (beni-deploy…), cassant login/upload (CORS/404). api.js utilise désormais window.location.origin en priorité (ingress même origine), REACT_APP_BACKEND_URL en repli seulement. Vérifié : bundle sans l'ancienne URL, login + formulaire contact OK dans le navigateur.
+- 14/09/2026 : Sécurisation — GET /api/contact (liste publique des messages) supprimé ; les messages ne sont lisibles que via /api/admin/messages (JWT requis). POST /api/contact reste public. Vérifié : GET public → 405, POST → 200, admin sans auth → 401, avec auth → 200.
 
 ## Backlog priorisé
-- P0 : Notifications sur le formulaire de contact (Resend/SendGrid ou WhatsApp via Twilio) — les messages sont visibles dans l'admin mais personne n'est prévenu.
 - P1 : Mesure des perfs mobile (three.js + GSAP + framer-motion) et SEO au déploiement.
-- P2 : Sécuriser/retirer `GET /api/contact` public (remplacé par /api/admin/messages protégé).
 - P2 : Gestion des autres contenus (actualités, textes) dans l'admin.
 
 ## Prochaines tâches
-1. Brancher Resend pour notifier beniarchitecture@gmail.com à chaque message.
-2. Déployer en production (les variables JWT_SECRET / ADMIN_* / EMERGENT_LLM_KEY suivent le .env).
-3. Gestion des actualités dans l'admin.
+1. Déployer en production (les variables JWT_SECRET / ADMIN_* / EMERGENT_* suivent le .env).
+2. Gestion des actualités dans l'admin.

@@ -116,24 +116,6 @@ async def create_contact_message(payload: ContactMessageCreate):
     return msg
 
 
-@api_router.get("/contact", response_model=List[ContactMessage])
-async def list_contact_messages(limit: int = 50):
-    # Basic endpoint to verify submissions. (Not protected.)
-    limit = max(1, min(200, limit))
-
-    docs = await (
-        db.contact_messages.find({}, {"_id": 0})
-        .sort("created_at", -1)
-        .to_list(limit)
-    )
-
-    for d in docs:
-        if isinstance(d.get("created_at"), str):
-            d["created_at"] = datetime.fromisoformat(d["created_at"])
-
-    return docs
-
-
 # -----------------------------
 # Auth (JWT httpOnly cookies)
 # -----------------------------
