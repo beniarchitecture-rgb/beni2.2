@@ -332,7 +332,10 @@ async def create_project(payload: ProjectIn, user: dict = Depends(get_current_us
     if await db.projects.find_one({"id": payload.id}):
         raise HTTPException(status_code=409, detail="Un projet avec cet identifiant existe déjà")
     doc = payload.model_dump()
-    doc["order"] = await db.projects.count_documents({})
+    # Les nouveaux projets passent en première position (le plus récent d'abord),
+    # l'ordre des projets existants est préservé.
+    first = await db.projects.find({}, {"_id": 0, "order": 1}).sort("order", 1).limit(1).to_list(1)
+    doc["order"] = (first[0].get("order", 0) if first else 0) - 1
     doc["updated_at"] = datetime.now(timezone.utc).isoformat()
     await db.projects.insert_one(doc)
     doc.pop("_id", None)
