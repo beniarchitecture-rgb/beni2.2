@@ -228,13 +228,13 @@ export const siteConfig = {
         fr: ["Religieux", "8000 places", "Institutionnel"],
         en: ["Religious", "8,000 seats", "Institutional"],
       },
-      imageUrl: "/api/files/beni-architecture/optimized/860bfd5c299e0c9d51a5022ede4c33bd.webp",
+      imageUrl: "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/ut3n7gui_ChatGPT%20Image%2011%20ao%C3%BBt%202026%2C%2014_32_20.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/6af6831f0a220ca8446f9e7946111c45.webp",
-        "/api/files/beni-architecture/optimized/0d4a89b78d735b9ca82702acf53aea34.webp",
-        "/api/files/beni-architecture/optimized/860bfd5c299e0c9d51a5022ede4c33bd.webp",
-        "/api/files/beni-architecture/optimized/6e250c0573d54ee92831f0610ab69b55.webp",
-        "/api/files/beni-architecture/optimized/316c34cc01153c27c72f2de7ce6aa2d3.webp",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/1mst6tau_ChatGPT%20Image%2012%20ao%C3%BBt%202026%2C%2014_29_37.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/heobd14i_ChatGPT%20Image%2012%20ao%C3%BBt%202026%2C%2013_46_54.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/ut3n7gui_ChatGPT%20Image%2011%20ao%C3%BBt%202026%2C%2014_32_20.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/0jzirgv4_ChatGPT%20Image%2014%20ao%C3%BBt%202026%2C%2009_40_18.png",
+        "https://customer-assets-4nw71qhi.emergentagent.net/job_arch-landing-1/artifacts/y7spjxwx_ChatGPT%20Image%2014%20ao%C3%BBt%202026%2C%2009_37_19.png",
       ],
     },
     {
@@ -268,12 +268,12 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/89a6bf64583e0f7196b944c43ee422a8.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/a5oeav62_ChatGPT%20Image%2018%20juin%202026%2C%2016_24_29.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/8b7647f1e0f470698f642cb439a1693f.webp",
-        "/api/files/beni-architecture/optimized/89a6bf64583e0f7196b944c43ee422a8.webp",
-        "/api/files/beni-architecture/optimized/3fec802f580bb52785f45db80844e336.webp",
-        "/api/files/beni-architecture/optimized/f035cc3c07f53afb06ae7a1e223b248e.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y60i29e3_ChatGPT%20Image%2018%20juin%202026%2C%2016_14_22.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/a5oeav62_ChatGPT%20Image%2018%20juin%202026%2C%2016_24_29.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/x1h13q85_ChatGPT%20Image%2018%20juin%202026%2C%2017_18_48.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/gzl5n9v1_ChatGPT%20Image%2018%20juin%202026%2C%2017_29_59.png",
       ],
       tags: {
         fr: ["Éducation", "R+3", "Institutionnel"],
@@ -327,13 +327,13 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/7933654adb08b313964c5034afabc827.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/juz0uet8_F9067584-06A3-44C9-82AF-BCEB5A25A1C4%20%281%29.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/7933654adb08b313964c5034afabc827.webp",
-        "/api/files/beni-architecture/optimized/512bd40530ccd7c9da3db176ab34ce4c.webp",
-        "/api/files/beni-architecture/optimized/2411e8b0aef4cb206b229ab4107700ef.webp",
-        "/api/files/beni-architecture/optimized/9e6e9344c9a73f18b842c740dbbb0b0a.webp",
-        "/api/files/beni-architecture/optimized/5981b4f9356a66551df7bcb3fa3a28e5.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/juz0uet8_F9067584-06A3-44C9-82AF-BCEB5A25A1C4%20%281%29.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/l1nmjrjq_IMAGE%2001.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zarxgsk1_IMAGE%2002.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/181sgfhp_IMAGE%2003.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/9su30oe8_IMAGE%2004.jpg",
       ],
       tags: {
         fr: ["Éducation", "Institutionnel"],
@@ -371,12 +371,12 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/42b20222d73ff832cc73ea001a3e07a9.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y4tivtx1_ChatGPT%20Image%203%20ao%C3%BBt%202026%2C%2013_58_36.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/42b20222d73ff832cc73ea001a3e07a9.webp",
-        "/api/files/beni-architecture/optimized/6ae2f7c8569ae46640937868bba148f9.webp",
-        "/api/files/beni-architecture/optimized/28b9d154eb1a766665f0be8b20c8dec3.webp",
-        "/api/files/beni-architecture/optimized/d0a6443375fbb9ef429b46fa2bda6006.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y4tivtx1_ChatGPT%20Image%203%20ao%C3%BBt%202026%2C%2013_58_36.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ssrx8yr8_ChatGPT%20Image%2024%20juil.%202026%2C%2010_47_00.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zaues402_ChatGPT%20Image%2024%20juil.%202026%2C%2010_51_42.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/kh6tggkj_ChatGPT%20Image%2024%20juil.%202026%2C%2011_04_25.png",
       ],
       tags: {
         fr: ["Culte", "Institutionnel"],
@@ -416,13 +416,13 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/d9ae2b7fc7a95a6335712d2551a0b42f.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y04fy7jy_IMAGE%2003.jpg",
       gallery: [
-        "/api/files/beni-architecture/optimized/267325e0f73479437d0c77ff9a4b71aa.webp",
-        "/api/files/beni-architecture/optimized/97122019be2125795d17467c932def08.webp",
-        "/api/files/beni-architecture/optimized/d9ae2b7fc7a95a6335712d2551a0b42f.webp",
-        "/api/files/beni-architecture/optimized/e97027dd71cc29ba5e957dff71356bca.webp",
-        "/api/files/beni-architecture/optimized/aad1a112ebb9fa0767da723859e42ea1.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/hmgsgbm7_IMAGE%2001.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ni91dc7i_IMAGE%2002.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/y04fy7jy_IMAGE%2003.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/k9henzka_IMAGE%2004.jpg",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/39heh9g5_IMAGE%2005.jpg",
       ],
       tags: {
         fr: ["Culte", "Institutionnel"],
@@ -468,13 +468,13 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/ea08d2b02ec2131c994269030b27faf9.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/cas0yezo_ChatGPT%20Image%2027%20juil.%202026%2C%2008_42_58.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/ea08d2b02ec2131c994269030b27faf9.webp",
-        "/api/files/beni-architecture/optimized/ee31262a2f152fe6f18dc281575eeabd.webp",
-        "/api/files/beni-architecture/optimized/ff4af04805e74ef4953296acb93571bf.webp",
-        "/api/files/beni-architecture/optimized/e7b5716ca8414b15fe9f7affac5e42ad.webp",
-        "/api/files/beni-architecture/optimized/f1eb785b4bab2dc583ed1bf3216e62bd.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/cas0yezo_ChatGPT%20Image%2027%20juil.%202026%2C%2008_42_58.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/vol79yj7_ChatGPT%20Image%2027%20juil.%202026%2C%2011_26_06.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/58uc83xi_ChatGPT%20Image%2027%20juil.%202026%2C%2011_37_56.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qp0d0zk5_ChatGPT%20Image%2027%20juil.%202026%2C%2011_49_34.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ohbk5k2k_ChatGPT%20Image%2027%20juil.%202026%2C%2011_57_18.png",
       ],
       tags: {
         fr: ["Loisirs", "Équipement public", "Commercial"],
@@ -516,10 +516,10 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/36938c44227348f4c6de7ef7a2e436e6.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ja32ews6_ChatGPT%20Image%208%20juil.%202026%2C%2010_39_27.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/36938c44227348f4c6de7ef7a2e436e6.webp",
-        "/api/files/beni-architecture/optimized/616d42e6abfab5e6086448b180691cab.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ja32ews6_ChatGPT%20Image%208%20juil.%202026%2C%2010_39_27.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/i3i30ef7_ChatGPT%20Image%2010%20juin%202026%2C%2017_31_46.png",
       ],
       tags: {
         fr: ["Hôtellerie", "Commercial"],
@@ -556,12 +556,12 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/cf54afccd3e588eeb08ba13fe5c6c0b2.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/m6epvw2m_ChatGPT%20Image%2022%20juin%202026%2C%2010_53_24.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/cf54afccd3e588eeb08ba13fe5c6c0b2.webp",
-        "/api/files/beni-architecture/optimized/04461a84c2422c26c4369fd9964ce6b1.webp",
-        "/api/files/beni-architecture/optimized/36f4acb98864195bd3720635edf31c84.webp",
-        "/api/files/beni-architecture/optimized/938b1b9a12655b0ac1b7e1b5afedf37b.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/m6epvw2m_ChatGPT%20Image%2022%20juin%202026%2C%2010_53_24.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/bbqbkbum_ChatGPT%20Image%2022%20juin%202026%2C%2011_01_33.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/l0y546x0_ChatGPT%20Image%2022%20juin%202026%2C%2013_09_20.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/8x284k97_ChatGPT%20Image%2022%20juin%202026%2C%2013_14_35.png",
       ],
       tags: {
         fr: ["Social", "Institutionnel", "Hébergement"],
@@ -595,11 +595,11 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/16fc9cd503ec7ba8fcef65e572abfa44.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ykqh7rse_beni%20architecture.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/16fc9cd503ec7ba8fcef65e572abfa44.webp",
-        "/api/files/beni-architecture/optimized/690782990ddc484ab1988b1441357463.webp",
-        "/api/files/beni-architecture/optimized/38fff2b4b94c468167485020fed4a798.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ykqh7rse_beni%20architecture.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/bujsr8n5_beni%20architecture1.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/tckg2gvk_beni%20architecture3.png",
       ],
       tags: {
         fr: ["Résidentiel", "Immeuble"],
@@ -625,13 +625,13 @@ export const siteConfig = {
         en: ["16 studios", "2 G+2 buildings", "Contemporary façades"],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/1d256c00d74931cc2277a8db776fc393.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ky4m1zv3_beni%20architecture_22.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/1d256c00d74931cc2277a8db776fc393.webp",
-        "/api/files/beni-architecture/optimized/7703cd6658821238e1b100cb7beb6020.webp",
-        "/api/files/beni-architecture/optimized/bdca3a7bb88b8ddab37e891f56753cd4.webp",
-        "/api/files/beni-architecture/optimized/1f74d59f4ccec9e70d63048528cf4fad.webp",
-        "/api/files/beni-architecture/optimized/342ad49d84281ea070359a7c45e88481.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ky4m1zv3_beni%20architecture_22.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/mdxj2tnj_beni%20architecture55.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/1w528nqr_beni%20architecture77.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/852j6jbm_beni%20architecture78.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/fi60egsw_beni%20architecture88.png",
       ],
       tags: {
         fr: ["Résidentiel", "Studios", "R+2"],
@@ -667,13 +667,13 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/2e5caeea70cc40289b431abd3b8144af.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/q13xmymx_ChatGPT%20Image%2028%20juil.%202026%2C%2015_51_31.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/24e2770571bf300ab77bc0102ba95046.webp",
-        "/api/files/beni-architecture/optimized/70e4fe94fb7c9ea19013916b197624a8.webp",
-        "/api/files/beni-architecture/optimized/914be2252fa76e1d7296f337ef805c42.webp",
-        "/api/files/beni-architecture/optimized/2e5caeea70cc40289b431abd3b8144af.webp",
-        "/api/files/beni-architecture/optimized/ae9b11de59c0ca58bd23ad9ee3c0eab8.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/3r1fctci_ChatGPT%20Image%2024%20juil.%202026%2C%2009_29_57.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zt5s8zgi_ChatGPT%20Image%2028%20juil.%202026%2C%2015_03_20.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qhmiboof_ChatGPT%20Image%2028%20juil.%202026%2C%2015_49_52.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/q13xmymx_ChatGPT%20Image%2028%20juil.%202026%2C%2015_51_31.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/wkg85tnb_ChatGPT%20Image%2028%20juil.%202026%2C%2016_09_39.png",
       ],
       tags: {
         fr: ["Résidentiel", "Immeuble", "R+6"],
@@ -715,11 +715,11 @@ export const siteConfig = {
         ],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/dbbf6899688321ae3373dd2c49d2d23e.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qlwcxpd9_beniarchi.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/dbbf6899688321ae3373dd2c49d2d23e.webp",
-        "/api/files/beni-architecture/optimized/70bdf9b1f4895e91f842afe3ee1c3043.webp",
-        "/api/files/beni-architecture/optimized/deed3f2f263dbf26b3a104a93d89a11b.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qlwcxpd9_beniarchi.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/8pquqeql_beniarchi00.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/cezy4d47_beniarchi22.png",
       ],
       tags: {
         fr: ["Résidentiel", "Villa", "Triplex"],
@@ -745,12 +745,12 @@ export const siteConfig = {
         en: ["8-room villa", "1 swimming pool", "Landscaped garden"],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/36b5aca45ad75871f93033dda4eef6a8.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qbrt1956_ChatGPT%20Image%204%20ao%C3%BBt%202026%2C%2009_14_16.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/36b5aca45ad75871f93033dda4eef6a8.webp",
-        "/api/files/beni-architecture/optimized/f6d0f07c68f5e3978237c2ce252961db.webp",
-        "/api/files/beni-architecture/optimized/1d19f0a4b9f34a658733e30c83b4395c.webp",
-        "/api/files/beni-architecture/optimized/bf75090cf83131aa7ae770382c212a5c.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/qbrt1956_ChatGPT%20Image%204%20ao%C3%BBt%202026%2C%2009_14_16.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/zg6tsa54_ChatGPT%20Image%202%20juil.%202026%2C%2011_44_01.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/oywzy5g0_ChatGPT%20Image%202%20juil.%202026%2C%2013_56_06.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/rq2rxa0j_ChatGPT%20Image%202%20juil.%202026%2C%2014_46_31.png",
       ],
       tags: {
         fr: ["Résidentiel", "Villa", "Triplex"],
@@ -776,12 +776,12 @@ export const siteConfig = {
         en: ["1 swimming pool", "5 bedrooms", "2 family living rooms", "1 private living room"],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/1dff80e1f5f9997b92e24c388377bf66.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/f6k0sq8a_ChatGPT%20Image%209%20juin%202026%2C%2010_07_21.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/42e5705e1fb15ce6ecfa2c3d6ddbe1f1.webp",
-        "/api/files/beni-architecture/optimized/289c9431133c803a54240f46bbbad382.webp",
-        "/api/files/beni-architecture/optimized/fc418ebe62f6594a390152fea4ababfc.webp",
-        "/api/files/beni-architecture/optimized/1dff80e1f5f9997b92e24c388377bf66.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ijy092em_ChatGPT%20Image%209%20juin%202026%2C%2010_10_41.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/l6j1ict6_ChatGPT%20Image%209%20juin%202026%2C%2010_33_13.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/x7c95u31_ChatGPT%20Image%2010%20juin%202026%2C%2017_02_37.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/f6k0sq8a_ChatGPT%20Image%209%20juin%202026%2C%2010_07_21.png",
       ],
       tags: {
         fr: ["Résidentiel", "Villa", "Bioclimatique"],
@@ -807,12 +807,12 @@ export const siteConfig = {
         en: ["F8 apartment", "Triplex", "Premium residential"],
       },
       imageUrl:
-        "/api/files/beni-architecture/optimized/1a8480745af11286c35684db9f4dffcc.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/9c2800dz_beni%20architecture_2.png",
       gallery: [
-        "/api/files/beni-architecture/optimized/1a8480745af11286c35684db9f4dffcc.webp",
-        "/api/files/beni-architecture/optimized/03f43ce5ca65a522a86d83a1cf5b073a.webp",
-        "/api/files/beni-architecture/optimized/776e106f8079f2213b383590b8e358d5.webp",
-        "/api/files/beni-architecture/optimized/67c28ecdf328937e24cf067f951d0fb9.webp",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/9c2800dz_beni%20architecture_2.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/ya8tdkmn_beni%20architecture_11%20-%20Copie.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/77ssxjq2_ChatGPT%20Image%202%20juil.%202026%2C%2009_54_34.png",
+        "https://customer-assets-lxgj4vgw.emergentagent.net/job_b0eef712-15d1-4bdf-aade-5c9f0987e2df/artifacts/6oi18i9z_ChatGPT%20Image%2010%20juin%202026%2C%2009_01_58%20-%20Copie.png",
       ],
       tags: {
         fr: ["Résidentiel", "Villa", "Triplex"],

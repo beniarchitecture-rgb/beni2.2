@@ -181,6 +181,32 @@ export default function HomePage({ lang, onNavigateProjects, onNavigateContact }
   const { offset, ref: parallaxRef } = useParallax(0.4);
   const [isVisible, setIsVisible] = useState(false);
   const { projects } = useProjects();
+  const videoBoxRef = useRef(null);
+  const videoElRef = useRef(null);
+  const [showVideo, setShowVideo] = useState(false);
+
+  // La vidéo (535 Ko) ne se charge que lorsqu'elle devient visible à l'écran
+  useEffect(() => {
+    const el = videoBoxRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShowVideo(true);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: "0px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (showVideo && videoElRef.current) {
+      videoElRef.current.play?.().catch(() => {});
+    }
+  }, [showVideo]);
 
   // Diaporama d'arrière-plan de la bannière (images de projets) + effet Ken Burns
   const heroSlides = [
@@ -334,15 +360,16 @@ export default function HomePage({ lang, onNavigateProjects, onNavigateContact }
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             {/* Video with hover effect */}
-            <div className="relative group">
+            <div className="relative group" ref={videoBoxRef}>
               <video
+                ref={videoElRef}
                 className="aspect-video w-full object-cover block transition-transform duration-700 group-hover:scale-[1.02]"
-                src={`${process.env.PUBLIC_URL || ""}/lumina.mp4`}
-                autoPlay
+                src={showVideo ? `${process.env.PUBLIC_URL || ""}/lumina.mp4` : undefined}
+                autoPlay={showVideo}
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload={showVideo ? "auto" : "none"}
                 data-testid="about-lumina-video"
               />
               {/* Orange accent box */}

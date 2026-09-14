@@ -25,10 +25,11 @@ Reproduire le site BENI Architecture existant à l'identique (repo : https://git
 - 14/09/2026 : Mot de passe admin changé → « Beni-Archi-2026-Villa! » (ancien désactivé, vérifié 401).
 - 14/09/2026 : Fix critique récurrent — la plateforme réécrase périodiquement frontend/.env avec l'ancienne URL du fork (beni-deploy…), cassant login/upload (CORS/404). api.js utilise désormais window.location.origin en priorité (ingress même origine), REACT_APP_BACKEND_URL en repli seulement. Vérifié : bundle sans l'ancienne URL, login + formulaire contact OK dans le navigateur.
 - 14/09/2026 : Sécurisation — GET /api/contact (liste publique des messages) supprimé ; les messages ne sont lisibles que via /api/admin/messages (JWT requis). POST /api/contact reste public. Vérifié : GET public → 405, POST → 200, admin sans auth → 401, avec auth → 200.
+- 14/09/2026 : Perf mobile — constat : three.js/GSAP/framer-motion NON bundlés (code mort, 0 coût) ; le poids réel était les images CDN (1,3-3 Mo PNG chacune). Actions : 62 images converties en WebP (max 1920px, q82) via /app/scripts/optimize_images.py → ~200 Ko chacune (x10 plus léger), ré-hébergées sur l'object storage (/api/files/...) ; MongoDB + siteConfig.js mis à jour (sauvegardes dans /app/backups/). Vidéo lumina.mp4 (535 Ko) différée : chargée uniquement quand visible (IntersectionObserver). Mesures slow-4G mobile : événement load 11,5 s → 5,8 s en mode dev ; le build de production allège encore le JS (484 Ko minifié ≈ 150 Ko gzip vs 2,8 Mo dev). NB : la vidéo ne joue pas dans le navigateur de test (Chromium sans H.264) mais le codec est H.264/avc1, lisible par tous les vrais navigateurs.
 
 ## Backlog priorisé
-- P1 : Mesure des perfs mobile (three.js + GSAP + framer-motion) et SEO au déploiement.
 - P2 : Gestion des autres contenus (actualités, textes) dans l'admin.
+- P2 : Supprimer les composants three.js inutilisés (components/three/) et les deps gsap/framer-motion/three du package.json (code mort confirmé non bundlé).
 
 ## Prochaines tâches
 1. Déployer en production (les variables JWT_SECRET / ADMIN_* / EMERGENT_* suivent le .env).
