@@ -36,4 +36,5 @@ Reproduire le site BENI Architecture existant à l'identique (repo : https://git
 2. Gestion des actualités dans l'admin.
 
 ## Direction artistique (14/09/2026)
-- Typographie refaite à la demande de l'utilisateur : titres en **Anton** (grotesque massive, majuscules, style brutaliste/grands cabinets internationaux) + accents en **Cormorant Garamond italique orange** (signature conservée). Corps en Outfit. Chiffres des stats en Anton. Modifs centralisées : index.html (Google Fonts), index.css (règles h1-h5, .section-header h2, .stat-num). Admin conservé en Cormorant (outil interne).
+- Typographie refaite à la demande de l'utilisateur : titres en grotesque majuscules (style grands cabinets internationaux) + accents en **Cormorant Garamond italique orange** (signature conservée). Corps en Outfit.
+- Police des titres : **Archivo** graisse 500 (retouche après essai d'Anton, jugée « beaucoup trop grasse » par l'utilisateur). Curseur d'ajustement : font-weight dans index.css (règles h1-h5, .section-header h2, .stat-num) — 400 = plus léger, 600 = plus de présence. Modifs centralisées : index.html (Google Fonts), index.css. Admin conservé en Cormorant (outil interne).
