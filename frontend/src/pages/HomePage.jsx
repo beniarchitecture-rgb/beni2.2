@@ -374,8 +374,9 @@ export default function HomePage({ lang, onNavigateProjects, onNavigateContact }
               />
               {/* Orange accent box */}
               <div 
-                className="absolute -bottom-6 -right-6 w-24 h-24 transition-transform duration-500 group-hover:scale-110"
+                className="absolute -bottom-6 -right-6 w-16 h-16 md:w-24 md:h-24 transition-transform duration-500 group-hover:scale-110"
                 style={{ background: 'var(--orange)' }}
+                data-testid="about-video-accent"
               />
             </div>
 
