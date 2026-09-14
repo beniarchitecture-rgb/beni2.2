@@ -23,46 +23,79 @@ export async function fetchProjects() {
   return res.data;
 }
 
-// --- Admin auth (httpOnly cookies + one refresh retry) ---
+// --- Admin auth (Bearer token en secours des cookies httpOnly) ---
+const TOKEN_KEY = "beni_admin_access";
+const REFRESH_KEY = "beni_admin_refresh";
+
+const getAccessToken = () => localStorage.getItem(TOKEN_KEY) || "";
+const getRefreshToken = () => localStorage.getItem(REFRESH_KEY) || "";
+
+function clearTokens() {
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(REFRESH_KEY);
+}
+
+const authed = () => ({
+  withCredentials: true,
+  headers: getAccessToken() ? { Authorization: `Bearer ${getAccessToken()}` } : {},
+});
+
 async function withRefreshRetry(fn) {
   try {
     return await fn();
   } catch (e) {
     if (e?.response?.status === 401) {
-      await axios.post(`${API_BASE}/auth/refresh`, {}, { withCredentials: true });
-      return await fn();
+      try {
+        const rt = getRefreshToken();
+        const res = await axios.post(
+          `${API_BASE}/auth/refresh`,
+          {},
+          {
+            withCredentials: true,
+            headers: rt ? { Authorization: `Bearer ${rt}` } : {},
+          }
+        );
+        if (res.data?.access_token) localStorage.setItem(TOKEN_KEY, res.data.access_token);
+        return await fn();
+      } catch (refreshErr) {
+        clearTokens();
+        throw e;
+      }
     }
     throw e;
   }
 }
 
-const authed = { withCredentials: true };
-
 export async function adminLogin(email, password) {
-  const res = await axios.post(`${API_BASE}/auth/login`, { email, password }, authed);
+  const res = await axios.post(`${API_BASE}/auth/login`, { email, password }, { withCredentials: true });
+  if (res.data?.access_token) localStorage.setItem(TOKEN_KEY, res.data.access_token);
+  if (res.data?.refresh_token) localStorage.setItem(REFRESH_KEY, res.data.refresh_token);
   return res.data;
 }
 
 export async function adminMe() {
-  return withRefreshRetry(async () => (await axios.get(`${API_BASE}/auth/me`, authed)).data);
+  return withRefreshRetry(async () => (await axios.get(`${API_BASE}/auth/me`, authed())).data);
 }
 
 export async function adminLogout() {
-  await axios.post(`${API_BASE}/auth/logout`, {}, authed);
+  try {
+    await axios.post(`${API_BASE}/auth/logout`, {}, authed());
+  } catch (e) {}
+  clearTokens();
 }
 
 export async function fetchAdminMessages() {
-  return withRefreshRetry(async () => (await axios.get(`${API_BASE}/admin/messages`, authed)).data);
+  return withRefreshRetry(async () => (await axios.get(`${API_BASE}/admin/messages`, authed())).data);
 }
 
 export async function createProject(payload) {
-  return withRefreshRetry(async () => (await axios.post(`${API_BASE}/admin/projects`, payload, authed)).data);
+  return withRefreshRetry(async () => (await axios.post(`${API_BASE}/admin/projects`, payload, authed())).data);
 }
 
 export async function updateProject(id, payload) {
-  return withRefreshRetry(async () => (await axios.put(`${API_BASE}/admin/projects/${id}`, payload, authed)).data);
+  return withRefreshRetry(async () => (await axios.put(`${API_BASE}/admin/projects/${id}`, payload, authed())).data);
 }
 
 export async function deleteProject(id) {
-  return withRefreshRetry(async () => (await axios.delete(`${API_BASE}/admin/projects/${id}`, authed)).data);
+  return withRefreshRetry(async () => (await axios.delete(`${API_BASE}/admin/projects/${id}`, authed())).data);
 }

@@ -162,13 +162,13 @@ def create_refresh_token(user_id: str) -> str:
     return jwt.encode(payload, get_jwt_secret(), algorithm=JWT_ALGORITHM)
 
 
-def set_auth_cookies(response: Response, user_id: str, email: str) -> None:
+def set_auth_cookies(response: Response, access_token: str, refresh_token: str) -> None:
     response.set_cookie(
-        key="access_token", value=create_access_token(user_id, email),
+        key="access_token", value=access_token,
         httponly=True, secure=True, samesite="none", max_age=900, path="/",
     )
     response.set_cookie(
-        key="refresh_token", value=create_refresh_token(user_id),
+        key="refresh_token", value=refresh_token,
         httponly=True, secure=True, samesite="none", max_age=604800, path="/",
     )
 
@@ -238,12 +238,16 @@ async def login(payload: LoginInput, request: Request, response: Response):
         raise HTTPException(status_code=401, detail="Email ou mot de passe incorrect")
 
     await db.login_attempts.delete_one({"identifier": identifier})
-    set_auth_cookies(response, user["id"], email)
+    access = create_access_token(user["id"], email)
+    refresh = create_refresh_token(user["id"])
+    set_auth_cookies(response, access, refresh)
     return {
         "id": user["id"],
         "email": email,
         "name": user.get("name", "Admin"),
         "role": user.get("role", "admin"),
+        "access_token": access,
+        "refresh_token": refresh,
     }
 
 
@@ -263,6 +267,10 @@ async def logout(response: Response):
 async def refresh_access_token(request: Request, response: Response):
     token = request.cookies.get("refresh_token")
     if not token:
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
+            token = auth_header[7:]
+    if not token:
         raise HTTPException(status_code=401, detail="Non authentifié")
     try:
         payload = jwt.decode(token, get_jwt_secret(), algorithms=[JWT_ALGORITHM])
@@ -275,11 +283,12 @@ async def refresh_access_token(request: Request, response: Response):
     user = await db.users.find_one({"id": payload["sub"]})
     if not user:
         raise HTTPException(status_code=401, detail="Utilisateur introuvable")
+    access = create_access_token(user["id"], user["email"])
     response.set_cookie(
-        key="access_token", value=create_access_token(user["id"], user["email"]),
+        key="access_token", value=access,
         httponly=True, secure=True, samesite="none", max_age=900, path="/",
     )
-    return {"ok": True}
+    return {"ok": True, "access_token": access}
 
 
 # -----------------------------
