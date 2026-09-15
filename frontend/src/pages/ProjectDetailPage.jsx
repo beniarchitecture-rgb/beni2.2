@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { ProjectGallery } from "@/components/ProjectGallery";
@@ -24,6 +24,19 @@ export default function ProjectDetailPage({ lang }) {
       next: idx < projects.length - 1 ? projects[idx + 1] : null,
     };
   }, [project, projectId, projects]);
+
+  // Diaporama du hero : image principale + galerie, fondu automatique
+  const slides = useMemo(() => {
+    const all = [project?.imageUrl, ...(project?.gallery || [])].filter(Boolean);
+    return [...new Set(all)];
+  }, [project]);
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    if (slides.length < 2) return undefined;
+    const t = setInterval(() => setSlide((s) => (s + 1) % slides.length), 4500);
+    return () => clearInterval(t);
+  }, [slides.length]);
+  useEffect(() => setSlide(0), [projectId]);
 
   if (!project && loading) {
     return <div data-testid="page-project-loading" style={{ minHeight: "60vh", background: "var(--dark2)" }} />;
@@ -75,12 +88,49 @@ export default function ProjectDetailPage({ lang }) {
       >
         <div
           className="absolute inset-0"
-          style={{
-            background: `linear-gradient(to top, rgba(14,16,23,0.95) 0%, rgba(14,16,23,0.3) 50%, rgba(14,16,23,0.5) 100%), url(${project.imageUrl}) center/cover no-repeat`
-          }}
           data-testid="project-detail-hero-image"
           aria-label={`${project.title?.[lang]} cover`}
-        />
+        >
+          {slides.map((src, i) => (
+            <div
+              key={src}
+              className="absolute inset-0 transition-opacity duration-1000"
+              style={{
+                background: `url(${src}) center/cover no-repeat`,
+                opacity: i === slide ? 1 : 0,
+              }}
+              aria-hidden={i !== slide}
+            />
+          ))}
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to top, rgba(14,16,23,0.95) 0%, rgba(14,16,23,0.3) 50%, rgba(14,16,23,0.5) 100%)' }}
+          />
+        </div>
+
+        {/* Indicateurs du diaporama */}
+        {slides.length > 1 && (
+          <div className="absolute right-8 bottom-8 z-10 flex items-center gap-2" data-testid="project-detail-hero-indicators">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setSlide(i)}
+                aria-label={`Image ${i + 1}`}
+                data-testid={`project-detail-slide-${i}`}
+                className="transition-all duration-500"
+                style={{
+                  height: '3px',
+                  width: i === slide ? '2rem' : '0.75rem',
+                  background: i === slide ? '#E8600A' : 'rgba(232, 230, 223, 0.35)',
+                  cursor: 'pointer',
+                  border: 'none',
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Back button */}
         <div className="absolute left-8 top-24 z-10" data-testid="project-detail-back">
